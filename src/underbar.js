@@ -43,11 +43,11 @@
     //return n === undefined ? array[array.length -1]:
     //var reverse= array.reverse();
 
-    if (n === undefined){
+    if (n === undefined) {
       return array[array.length - 1];
     } else {
       var reversed = array.reverse();
-      var backwards = reversed.slice(0,n);
+      var backwards = reversed.slice(0, n);
       return backwards.reverse();
     }
   };
@@ -59,12 +59,12 @@
   // iterator function over each item in the input collection.
   _.each = function(collection, iterator) {
     // check collection type
-    if(Array.isArray(collection)){
-      for(var i = 0; i < collection.length; i++){
+    if (Array.isArray(collection)) {
+      for (var i = 0; i < collection.length; i++) {
         iterator(collection[i], i, collection);
       }
     } else{
-      for (var key in collection){
+      for (var key in collection) {
         iterator(collection[key], key, collection);
       }
     }
@@ -92,8 +92,8 @@
     // make a variable for the anser
     var result = [];
     // iterate through collection
-    for (var i = 0; i < collection.length; i++){
-      if (test(collection[i]) === true){
+    for (var i = 0; i < collection.length; i++) {
+      if (test(collection[i]) === true) {
         result.push(collection[i]);
       }
     }
@@ -108,6 +108,18 @@
     // copying code in and modifying it
 
     // same as collection but looking for a false result
+    //make a contanver variable
+    var result = [];
+    var passedTest = _.filter(collection, test);
+    // iterate over collection
+    for (var i = 0; i < collection.length; i++) {
+      if (passedTest.includes(collection[i]) === false) {
+        result.push(collection[i]);
+      }
+    }
+    return result;
+    //test collection
+    //push false variables into container
   };
 
   // Produce a duplicate-free version of the array.
