@@ -63,7 +63,7 @@
       for (var i = 0; i < collection.length; i++) {
         iterator(collection[i], i, collection);
       }
-    } else{
+    } else {
       for (var key in collection) {
         iterator(collection[key], key, collection);
       }
@@ -126,12 +126,51 @@
   _.uniq = function(array, isSorted, iterator) {
     // has to be a hashmap to compare the arrays
     //set two container variables
-    // condition for isSorted
-    //if(isSorted...){
 
-    //}else{
+    var result = [];
 
-    //}
+    if (iterator === undefined) {
+      var indexesUnique = [];
+      var uniqValues = [];
+      for(var i = 0; i < array.length; i++) {
+        if(!uniqValues.includes(array[i])) {
+          uniqValues.push(array[i]);
+          indexesUnique.push(i);
+        }
+
+        for (var j = 0; j < indexesUnique.length; j++) {
+          result.push(array[j]);
+        }
+      }
+      return result;
+    } else {
+      // created empty transformed array
+      var transformed = [];
+
+      //iterate over array and push to tranformed array
+      for (var k = 0; k < array.length; k++) {
+        transformed.push(iterator(array[k]));
+      }
+
+      var indexesUnique = [];
+      var uniqValues = [];
+      for(var m = 0; m < transformed.length; m++) {
+        if(!uniqValues.includes(transformed[m])) {
+          uniqValues.push(transformed[m]);
+          indexesUnique.push(m);
+        }
+
+        for (var n = 0; n < indexesUnique.length; n++) {
+          result.push(array[j]);
+        }
+      }
+
+      return result;
+    }
+  //   }
+  //   // var arrayOne=[];
+  //  } // condition for isSorted
+
   };
 
 
@@ -142,6 +181,13 @@
     // the members, it also maintains an array of results.
 
     //similar to each but return it
+    //make a variable to store result
+    //var itsMap=[];
+    ////for loop
+    //for (var i= 0; i<collection.length; i++){
+      //var result= iterator(collection[i],i,collection)
+      // itsMap.push(result)
+    //} return itsMap
   };
 
   /*
@@ -183,6 +229,33 @@
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
+    // if statment for collection
+    //if(Array.isArray(collection)=== false){
+      //if (accumulator === undefined) {
+        //accumulator=collection[0]
+
+      //}
+      //use for loop
+    // for ( var key in collection){
+      //var accumulator = iterator(accumulator, collection[key], key, collection)
+
+    //}
+    //return accumulator
+    //}else{
+      //var alpha = 0;
+      //if(accumulator === undefined){
+        //accumulator=collection[0]
+        //alpha = 1;
+        //for (var i= alpha; i<collection.length; i++){
+          //var accumulator =iterator(accumulator,collection[i],i,collection)
+
+        //}
+        //return accumulator
+
+      //}
+
+    //}
+
   };
 
   // Determine if the array or object contains a given value (using `===`).
@@ -277,6 +350,14 @@
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    // create object variable
+    //var result ={};
+    //return function(){
+      //var arg = JSON.stringify(arguments)
+      //if(!result.hasOwnProperty(arg)){
+        //result[arg] = func.apply(this, arguments)
+      //}
+    //}
   };
 
   // Delays a function for the given number of milliseconds, and then calls
@@ -286,6 +367,7 @@
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
+    //return setTimeout.apply(this, arguments)
   };
 
 
